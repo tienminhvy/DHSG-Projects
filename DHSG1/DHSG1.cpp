@@ -51,24 +51,29 @@ void readFile(char path[],size_t n) {
     // finding how many numbers in file
     // method 1
 
-
-    //int tmp;
-    //while (!feof(fp)) {
-    //    fread(&tmp, sizeof(int), 1, fp);
-    //    n++;
-    //}
-    //fseek(fp, 0, SEEK_SET);
-    //n--;
-
+    int tmp;
+    while (!feof(fp)) {
+        fread(&tmp, sizeof(int), 1, fp);
+        n++;
+    }
+    rewind(fp);
+    n--;
 
     // method 2
-    fseek(fp, 0, SEEK_END);
-    size_t fsize = ftell(fp);
-    rewind(fp);
-    n = fsize / sizeof(int);
 
-    int* arr;
-    arr = new int[n];
+    //fseek(fp, 0, SEEK_END);
+    //size_t fsize = ftell(fp);
+    //rewind(fp);
+    //n = fsize / sizeof(int);
+
+    // dynamic array
+    // method 1
+    /*int* arr;
+    arr = new int[n];*/
+
+    // method 2
+
+    int* arr = (int*)malloc(n * sizeof(int));
 
     if (arr == NULL) {
         cout << "Not enough memory" << endl;
@@ -93,12 +98,22 @@ int main()
     
     // dynamic array
 
-    int* a;
-    a = new int[n] {14, 23, 46, 98, 142};
+    // method 1
+    /*int* a;
+    a = new int[n] {14, 23, 46, 98, 142};*/
+
+    // method 2
+    int* a = (int*)malloc(n * sizeof(int));
 
     if (a == NULL) {
         cout << "Not enough memory" << endl;
         exit(0);
+    }
+
+    // method 2 only
+    for (int i = 0; i < n; i++)
+    {
+        a[i] = (i + 1) * 6;
     }
 
     char path[] = "D:\\_____SGU IT Dept\\File & Dynamic Array\\data.bin";
@@ -108,4 +123,6 @@ int main()
 
     cout << endl;
     cout << "End of program." << endl;
+
+    free(a);
 }
