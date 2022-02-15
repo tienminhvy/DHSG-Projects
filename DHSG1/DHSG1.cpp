@@ -67,7 +67,9 @@ void readFile(char path[],size_t n) {
     //n = fsize / sizeof(int);
 
     // dynamic array
+    // 
     // method 1
+
     /*int* arr;
     arr = new int[n];*/
 
@@ -97,7 +99,7 @@ int main()
     // int a[MAXN] = { 14,23,52,41,33 };
     
     // dynamic array
-
+    //
     // method 1
     /*int* a;
     a = new int[n] {14, 23, 46, 98, 142};*/
@@ -123,6 +125,4 @@ int main()
 
     cout << endl;
     cout << "End of program." << endl;
-
-    free(a);
 }
